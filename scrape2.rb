@@ -20,4 +20,5 @@ doc.xpath('/html/body/main/section').each_with_index do |section, index|
   pitnews << contents
 end
 
-pp pitnews
+require 'json'
+File.open('pitnews.json', 'w') { |file| file.write({pitnews: pitnews}.to_json) }
