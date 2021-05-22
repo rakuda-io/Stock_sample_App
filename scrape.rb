@@ -1,10 +1,18 @@
 require 'net/http'
 
-url = 'https://finviz.com/quote.ashx?t=ko'
-uri = URI(url)
+# WebサーバーからHTMLを取得する処理
+def get_from(url)
+  Net::HTTP.get(URI(url))
+end
 
-html = Net::HTTP.get(uri)
+# 取得したHTMLをファイルに保存する処理
+def write_file(path, text)
+  # file = File.open(path, 'w')
+  # file.write(text)
+  # file.close
+  File.open(path, 'w') { |file| file.write(text) }
+end
 
-file = File.open('finviz.html', 'w')
-file.write(html)
-file.close
+html = get_from('https://finviz.com/quote.ashx?t=ko')
+
+write_file('finviz.html', html)
