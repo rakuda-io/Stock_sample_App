@@ -17,5 +17,5 @@ def write_file(path, text)
   File.open(path, 'w') { |file| file.write(text)}
 end
 
-html = get_from('https://masayuki14.github.io/pit-news/')
-write_file('pitnews.html', html)
+html = get_from('https://finviz.com/quote.ashx?t=ko')
+write_file('coca-cola.html', html)
